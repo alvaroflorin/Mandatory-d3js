@@ -88,4 +88,5 @@ svg
         })
       ;
   };
+  
   createSvg(stats);
