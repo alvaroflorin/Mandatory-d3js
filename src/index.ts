@@ -39,22 +39,6 @@ svg
     createSvg(stats);
   });
   
-   /*
-    const maxAffected = data.reduce(
-      (max, item) => (item.value > max ? item.value : max),
-      0
-    );
-
-    const affectedRadiusScale=d3
-    .scaleLinear()
-    .domain([0,maxAffected])
-    .range([5,45])
-    const affectedRadiusScaleQuantile=d3
-    .scaleLinear()
-    .domain([0,15,50,100,1000,5000,10000,40000])
-    .range([5,9,12,15,18,21,25,30,40])
-    */
-  
   const createSvg=(data:ResultEntry[])=>{
    
     const affectedRadiusScaleQuantile=d3
@@ -75,18 +59,14 @@ svg
       .enter()
       .append("circle")
       .attr("class","affected-marker")
-      .attr("r", function(d) {
-          return calculateRadiusBasedOnAffectedCases(d.name);
-        })
+      .attr("r", d=>calculateRadiusBasedOnAffectedCases(d.name))
       .attr("cx",d=> aProjection([d.long,d.lat])[0])
       .attr("cy",d=> aProjection([d.long,d.lat])[1])
       .merge(circles as any)
-        .transition()
-        .duration(500)
-        .attr("r", function(d) {
-          return calculateRadiusBasedOnAffectedCases(d.name);
-        })
+      .transition()
+      .duration(500)
+      .attr("r", d=>calculateRadiusBasedOnAffectedCases(d.name))
       ;
   };
-  
+
   createSvg(stats);

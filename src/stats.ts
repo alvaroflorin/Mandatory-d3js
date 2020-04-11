@@ -69,7 +69,7 @@ export const stats: ResultEntry[] = [
     },
     {
       name:"Navarra",
-      value:10
+      value:13
     }
   ];
   export const statsUpdated: ResultEntry[] = [
