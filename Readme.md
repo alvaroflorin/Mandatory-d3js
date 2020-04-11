@@ -11,18 +11,56 @@ features:
 
 # Steps
 
-- We will take as starting example _00-boilerplate_, let's copy the content from that folder and execute _npm install_.
+- I take as starting example 02-pin-location-scale from https://github.com/Lemoncode/d3js-typescript-examples/tree/master/02-maps 
 
-```bash
-npm install
+_./src/index.html_
+
+Two button were added to the index page
+
+```diff
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./map.css" />
+    <link rel="stylesheet" type="text/css" href="./base.css" />
+  </head>
+  <body>
++   <div>
++    <button id="initial">Initial cases</button>
++    <button id="current">Current cases</button>
++  </div>
+    <script src="./index.ts"></script>
+  </body>
+</html>
 ```
 
-- When you deal with maps you can use two map formats GeoJSON or TopoJSON, topo JSON is lightweight and offers some extra
-  features, let's install the needed package to work with:
 
-```bash
-npm install topojson-client --save
+_./src/map.css_
+
+- Country class was renamed to community and some colours were changed
+
+```diff
+-.country {
++.community {
+   stroke-width: 1;
+   stroke: #2f4858;
+-  fill: #008c86;
++  fill: #b4a185;
+}
+.affected-marker {
+   stroke-width: 1;
+   stroke: #bc5b40;
+-  fill: #f88f70;
++  fill: #e93b3b;
+   fill-opacity: 0.7;
+}
 ```
+_./src/spain.json
+_./src/communities.ts
+_./src/stats.ts
+
+all names were checked to be the same in the 3 files, all accents were deleted and the letter 'ñ' from cataluña was changed to 'ny' being catalunya the new name. This was do in order to avoid all possible fails due to the languaje
+
+_./src/stats.ts
 
 ```bash
 npm install @types/topojson-client --save-dev
