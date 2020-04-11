@@ -8,6 +8,7 @@ features:
 
 ![Initial and current cases of covid19 in Spain](./content/Mandatory.gif)
 
+
 # Steps
 
 - We will take as starting example _00-boilerplate_, let's copy the content from that folder and execute _npm install_.
