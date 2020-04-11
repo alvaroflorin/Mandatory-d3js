@@ -66,6 +66,10 @@ export const stats: ResultEntry[] = [
     {
       name: "Islas Baleares",
       value: 6
+    },
+    {
+      name:"Navarra",
+      value:10
     }
   ];
   export const statsUpdated: ResultEntry[] = [
@@ -132,5 +136,9 @@ export const stats: ResultEntry[] = [
     {
       name: "Islas Baleares",
       value: 1488
+    },
+    {
+      name:"Navarra",
+      value:3748
     }
   ];

@@ -14,9 +14,7 @@ const svg = d3
 
 const aProjection = d3Composite
   .geoConicConformalSpain()
-  // Let's make the map bigger to fit in our resolution
   .scale(3300)
-  // Let's center the map
   .translate([500, 400]);
 
 const geoPath = d3.geoPath().projection(aProjection);
@@ -27,8 +25,7 @@ svg
   .data(geojson["features"])
   .enter()
   .append("path")
-  .attr("class", "country")
-  // data loaded from json file
+  .attr("class", "community")
   .attr("d", geoPath as any);
   
   document
@@ -43,14 +40,6 @@ svg
   });
   
    /*
-    const affectedRadiusScaleQuantile=d3
-  .scaleLinear()
-  .domain([0,15,50,100,1000,5000,10000,40000])
-  .range([0,5,10,15,20,25,35,35,40])
-    */
-  
-  const createSvg=(data:ResultEntry[])=>{
-   
     const maxAffected = data.reduce(
       (max, item) => (item.value > max ? item.value : max),
       0
@@ -60,11 +49,23 @@ svg
     .scaleLinear()
     .domain([0,maxAffected])
     .range([5,45])
+    const affectedRadiusScaleQuantile=d3
+    .scaleLinear()
+    .domain([0,15,50,100,1000,5000,10000,40000])
+    .range([5,9,12,15,18,21,25,30,40])
+    */
+  
+  const createSvg=(data:ResultEntry[])=>{
+   
+    const affectedRadiusScaleQuantile=d3
+    .scaleLinear()
+    .domain([0,15,50,100,1000,5000,10000,40000])
+    .range([5,9,12,15,18,21,25,30,40])
 
     const calculateRadiusBasedOnAffectedCases = (comunidad: string) => {
       const entry = data.find(item => item.name === comunidad);
     
-      return entry ? affectedRadiusScale(entry.value) : 0;
+      return entry ? affectedRadiusScaleQuantile(entry.value) : 0;
     };
 
       const circles=svg

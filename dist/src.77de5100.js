@@ -30060,6 +30060,9 @@ var stats = [{
 }, {
   name: "Islas Baleares",
   value: 6
+}, {
+  name: "Navarra",
+  value: 10
 }];
 exports.stats = stats;
 var statsUpdated = [{
@@ -30110,6 +30113,9 @@ var statsUpdated = [{
 }, {
   name: "Islas Baleares",
   value: 1488
+}, {
+  name: "Navarra",
+  value: 3748
 }];
 exports.statsUpdated = statsUpdated;
 },{}],"../node_modules/d3-composite-projections/src/math.js":[function(require,module,exports) {
@@ -33330,13 +33336,10 @@ var spainjson = require("./spain.json");
 var d3Composite = require("d3-composite-projections");
 
 var svg = d3.select("body").append("svg").attr("width", 1024).attr("height", 800).attr("style", "background-color: #FBFAF0");
-var aProjection = d3Composite.geoConicConformalSpain() // Let's make the map bigger to fit in our resolution
-.scale(3300) // Let's center the map
-.translate([500, 400]);
+var aProjection = d3Composite.geoConicConformalSpain().scale(3300).translate([500, 400]);
 var geoPath = d3.geoPath().projection(aProjection);
 var geojson = topojson.feature(spainjson, spainjson.objects.ESP_adm1);
-svg.selectAll("path").data(geojson["features"]).enter().append("path").attr("class", "country") // data loaded from json file
-.attr("d", geoPath);
+svg.selectAll("path").data(geojson["features"]).enter().append("path").attr("class", "community").attr("d", geoPath);
 document.getElementById("current").addEventListener("click", function handleCurrent() {
   createSvg(_stats.statsUpdated);
 });
@@ -33344,23 +33347,29 @@ document.getElementById("initial").addEventListener("click", function handleInit
   createSvg(_stats.stats);
 });
 /*
+ const maxAffected = data.reduce(
+   (max, item) => (item.value > max ? item.value : max),
+   0
+ );
+
+ const affectedRadiusScale=d3
+ .scaleLinear()
+ .domain([0,maxAffected])
+ .range([5,45])
  const affectedRadiusScaleQuantile=d3
-.scaleLinear()
-.domain([0,15,50,100,1000,5000,10000,40000])
-.range([0,5,10,15,20,25,35,35,40])
+ .scaleLinear()
+ .domain([0,15,50,100,1000,5000,10000,40000])
+ .range([5,9,12,15,18,21,25,30,40])
  */
 
 var createSvg = function createSvg(data) {
-  var maxAffected = data.reduce(function (max, item) {
-    return item.value > max ? item.value : max;
-  }, 0);
-  var affectedRadiusScale = d3.scaleLinear().domain([0, maxAffected]).range([5, 45]);
+  var affectedRadiusScaleQuantile = d3.scaleLinear().domain([0, 15, 50, 100, 1000, 5000, 10000, 40000]).range([5, 9, 12, 15, 18, 21, 25, 30, 40]);
 
   var calculateRadiusBasedOnAffectedCases = function calculateRadiusBasedOnAffectedCases(comunidad) {
     var entry = data.find(function (item) {
       return item.name === comunidad;
     });
-    return entry ? affectedRadiusScale(entry.value) : 0;
+    return entry ? affectedRadiusScaleQuantile(entry.value) : 0;
   };
 
   var circles = svg.selectAll("circle");
@@ -33404,7 +33413,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61309" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65268" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
