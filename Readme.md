@@ -8,7 +8,6 @@ features:
 
 ![Initial and current cases of covid19 in Spain](./content/Mandatory.gif)
 
-Codesandbox: https://codesandbox.io/s/hopeful-ellis-rlczx
 
 # Steps
 
