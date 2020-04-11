@@ -6,7 +6,7 @@ features:
 - Proper display all the countries (right size, center...).
 - Highlight the country where the mouse is pointing to (mouse hover).
 
-![Initial and current cases of covid19 in Spain](./content/chart.gif)
+![Initial and current cases of covid19 in Spain](./content/Mandatory.gif)
 
 # Steps
 
