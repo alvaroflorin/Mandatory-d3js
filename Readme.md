@@ -8,7 +8,7 @@ features:
 
 ![Europe chart plus mouse hover](./content/chart.gif)
 
-Codesandbox: https://codesandbox.io/s/headless-river-s7yj3
+Codesandbox: https://codesandbox.io/s/hopeful-ellis-rlczx
 
 # Steps
 
