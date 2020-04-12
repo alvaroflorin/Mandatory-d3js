@@ -148,6 +148,7 @@ Const statsUpdated was added with the current data of covid cases
 ```
 
 _./index.ts_
+
 On the imports part the change was that is necessary to add the import of statsUpdated and ResultEntry
 ```diff
  import * as d3 from "d3";
@@ -160,6 +161,7 @@ On the imports part the change was that is necessary to add the import of statsU
 ```
 
 _./index.ts_
+
 All relationed to the creation and fill of the circles in the map were grouped in const createSvg and some part were changed
 ```diff
 -const maxAffected = stats.reduce(
@@ -203,6 +205,7 @@ All relationed to the creation and fill of the circles in the map were grouped i
 + };
 ```
 _./index.ts_
+
 Using the buttons of the index.html I added an event listener to update the map when a button is clicked
 ```diff
 + document
