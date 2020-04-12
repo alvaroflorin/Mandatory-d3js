@@ -196,25 +196,24 @@ All relationed to the creation and fill of the circles in the map were grouped i
       .attr("r", d=>calculateRadiusBasedOnAffectedCases(d.name))
       .attr("cx",d=> aProjection([d.long,d.lat])[0])
       .attr("cy",d=> aProjection([d.long,d.lat])[1])
- +     .merge(circles as any)
- +     .transition()
- +     .duration(500)
- +     .attr("r", d=>calculateRadiusBasedOnAffectedCases(d.name))
-      ;
- + };
++     .merge(circles as any)
++     .transition()
++     .duration(500)
++     .attr("r", d=>calculateRadiusBasedOnAffectedCases(d.name));
++ };
 ```
 _./index.ts_
 Using the buttons of the index.html I added an event listener to update the map when a button is clicked
 ```diff
- document
-  .getElementById("current")
-  .addEventListener("click", function handleCurrent() {
-    createSvg(statsUpdated);
-  });
-  document
-  .getElementById("initial")
-  .addEventListener("click", function handleInitial() {
-    createSvg(stats);
-  });
++ document
++  .getElementById("current")
++  .addEventListener("click", function handleCurrent() {
++    createSvg(statsUpdated);
++  });
++  document
++  .getElementById("initial")
++  .addEventListener("click", function handleInitial() {
++    createSvg(stats);
++  });
 ```
 
