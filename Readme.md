@@ -49,13 +49,13 @@ Country class was renamed to community and some colours were changed
    fill-opacity: 0.7;
 }
 ```
-_./src/spain.json
-_./src/communities.ts
-_./src/stats.ts
+_./src/spain.json_
+_./src/communities.ts_
+_./src/stats.ts_
 
 All names were checked to be the same in the 3 files, all accents were deleted and the letter 'ñ' from cataluña was changed to 'ny' being catalunya the new name. This was do in order to avoid all possible fails due to the language
 
-_./src/stats.ts
+_./src/stats.ts_
 
 A interface was added to be the interface for initial data and current data of covid cases
 ```diff
@@ -64,14 +64,14 @@ A interface was added to be the interface for initial data and current data of c
 +  value: number;
 +}
 ```
-_./src/stats.ts
+_./src/stats.ts_
 
 Const stats was changed to add the ResultEntry interface
 ```diff
 +export const stats: ResultEntry[] = [
 -export const stats = [
 ```
-_./src/stats.ts
+_./src/stats.ts_
 
 Const statsUpdated was added with the current data of covid cases
 ```diff
